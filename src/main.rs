@@ -86,6 +86,22 @@ fn test_binary_search_tree(){
     //root node get test
     let root_node = BstNode::get_root(&max_node);
     println!("root node {:?}", root_node.borrow().key);
+    
+    // Test delete
+    if let Some(node_13) = rootlink.borrow().tree_search(&13) {
+        BstNode::delete(&rootlink, 13);
+        generate_dotfile_bst(&rootlink, "after_delete_13.dot");
+        println!("Node 13 dihapus (check after_delete_13.dot)");
+    } else {
+        println!("Node 13 tidak ditemukan");
+    }
+    
+    // Test tree_insert
+    let mut insert_test_root = Some(rootlink.clone());
+    BstNode::tree_insert(&mut insert_test_root, 9); 
+    BstNode::tree_insert(&mut insert_test_root, 50); 
+    BstNode::tree_insert(&mut insert_test_root, 12); 
+    generate_dotfile_bst(insert_test_root.as_ref().unwrap(), "test_insert.dot");
 
     //successor test
     let query_keys = vec![

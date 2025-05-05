@@ -20,6 +20,7 @@ pub fn generate_dotfile(root: &NodeLink, output_path: &str){
     let mut output = File::create(output_path).expect("Failed to create");
     let _ = output.write_all(final_text.as_bytes());}
 
+
 /**
  * We will print string as we traverse, node by node
  * at most a line per node printing, e.g: a--b;
